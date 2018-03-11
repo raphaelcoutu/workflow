@@ -15,6 +15,6 @@ node {
         sh 'sed -i "s/SESSION_DRIVER=.*/SESSION_DRIVER=redis/" .env'
     }
     stage('test') {
-        sh "./develop t"
+        sh "./develop test"
     }
 }
