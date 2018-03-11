@@ -1,19 +1,17 @@
 #!/usr/bin/env groovy
-
-// node('master') {
-//     stage('say-hello') {
-//         sh "echo 'hello world !!!'"
-//     }
-// }
-
 properties([pipelineTriggers([githubPush()])])
 
 node {
-    stage('Github') {
-        git url: 'https://github.com/raphaelcoutu/workflow.git', branch: 'master'    
-    }
-    stage('Output') {
-        sh "echo 'hello world'"
-        sh "echo 'NICE...'"
+    stage('build') {
+        git url: 'https://github.com/raphaelcoutu/workflow.git', branch: 'master'
+        
+        sh "sh ./develop up -d"
+        sh "sh ./develop composer install"
+
+        sh "cp .env.example .env"
+        sh "cp ./develop art key:generate"
+        sh 'sed -i "s/REDIS_HOST=.*/REDIS_HOST=redis/" .env'
+        sh 'sed -i "s/CACHE_DRIVER=.*/CACHE_DRIVER=redis/" .env'
+        sh 'sed -i "s/SESSION_DRIVER=.*/SESSION_DRIVER=redis/" .env'
     }
 }
