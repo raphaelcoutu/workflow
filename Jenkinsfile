@@ -5,8 +5,8 @@ node {
     stage('build') {
         git url: 'https://github.com/raphaelcoutu/workflow.git', branch: 'master'
         
-        sh "sh ./develop up -d"
-        sh "sh ./develop composer install"
+        sh "./develop up -d"
+        sh "./develop composer install"
 
         sh "cp .env.example .env"
         sh "cp ./develop art key:generate"
