@@ -9,5 +9,5 @@
 properties([pipelineTriggers([githubPush()])])
 
 node {
-    git url: 'https://github.com/someone/something.git', branch: 'master'
+    git url: 'https://github.com/raphaelcoutu/workflow.git', branch: 'master'
 }
