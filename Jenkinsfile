@@ -14,6 +14,6 @@ node {
     }
     stage('Output') {
         sh "echo 'hello world'"
-        sh "echo 'NICE'"
+        sh "echo 'NICE...'"
     }
 }
