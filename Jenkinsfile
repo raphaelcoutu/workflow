@@ -9,5 +9,10 @@
 properties([pipelineTriggers([githubPush()])])
 
 node {
-    git url: 'https://github.com/raphaelcoutu/workflow.git', branch: 'master'
+    stage('Github') {
+        git url: 'https://github.com/raphaelcoutu/workflow.git', branch: 'master'    
+    }
+    stage('Output') {
+        sh "echo 'hello world'"
+    }
 }
