@@ -15,8 +15,5 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $this->assertTrue(true);
-
-        //Failing test
-        $this->assertFalse(true);
     }
 }
