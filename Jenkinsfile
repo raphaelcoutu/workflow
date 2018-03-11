@@ -14,4 +14,7 @@ node {
         sh 'sed -i "s/CACHE_DRIVER=.*/CACHE_DRIVER=redis/" .env'
         sh 'sed -i "s/SESSION_DRIVER=.*/SESSION_DRIVER=redis/" .env'
     }
+    stage('test') {
+        sh "./develop t"
+    }
 }
