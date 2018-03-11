@@ -2,6 +2,9 @@
 
 if [ ! -z "$BUILD_NUMBER" ]; then
     export XDEBUG_HOST=$(/sbin/ifconfig docker0 | grep 'inet addr' | cut -d: -f2 | cut -d ' ' -f1)
+    
+    # Override project name for jenkins
+    export COMPOSE_PROJECT_NAME="workflow"
 else
     export XDEBUG_HOST=$(ipconfig getifaddr en1)
 fi
